@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canteens</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Canteens List</h1>
+
+        <!-- Form to Create a New Canteen -->
+        <h2>Create a New Canteen</h2>
+        <form action="/canteens" method="POST">
+            <div class="form-group">
+                <label for="canteenName">Canteen Name:</label>
+                <input type="text" name="name" id="canteenName" required>
+            </div>
+            <button type="submit" class="btn">Create Canteen</button>
+        </form>
+
+        <!-- Display List of Canteens -->
+        <ul>
+            <% canteens.forEach(canteen=> { %>
+                <li>
+                    <a href="/canteens/<%= canteen._id %>">
+                        <%= canteen.name %>
+                    </a>
+                    <form action="/canteens/<%= canteen._id %>?_method=DELETE" method="POST" style="display:inline;">
+                        <button type="submit" class="btn-delete">Delete</button>
+                    </form>
+                </li>
+                <% }); %>
+        </ul>
+
+        <a href="/auth/logout" class="btn-logout">Logout</a>
+    </div>
+</body>
+
+</html>

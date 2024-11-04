@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= canteen.name %> Details
+    </title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>
+            <%= canteen.name %>
+        </h1>
+
+        <!-- Form to Create a New Food Item -->
+        <h2>Add a New Food Item</h2>
+        <form action="/canteens/<%= canteen._id %>/foodItem" method="POST">
+            <div class="form-group">
+                <label for="foodName">Food Name:</label>
+                <input type="text" name="name" id="foodName" required>
+            </div>
+            <button type="submit" class="btn">Add Food Item</button>
+        </form>
+
+        <!-- Display Food Items in the Canteen -->
+        <h2>Available Food Items</h2>
+        <ul>
+            <% canteen.foodItems.forEach(item=> { %>
+                <li>
+                    <h3>
+                        <%= item.name %>
+                    </h3>
+                    <p>Status: <span class="<%= item.available ? 'available' : 'out-of-stock' %>">
+                            <%= item.available ? 'Available' : 'Out of Stock' %>
+                        </span></p>
+
+                    <!-- Toggle Availability Button -->
+                    <form action="/canteens/<%= canteen._id %>/foodItem/<%= item._id %>/toggle" method="POST"
+                        style="display:inline;">
+                        <button type="submit" class="<%= item.available ? 'btn-available' : 'btn-out-of-stock' %>">
+                            <%= item.available ? 'Set Out of Stock' : 'Set Available' %>
+                        </button>
+                    </form>
+
+                    <!-- Delete Food Item Button -->
+                    <form action="/canteens/<%= canteen._id %>/foodItem/<%= item._id %>?_method=DELETE" method="POST"
+                        style="display:inline;">
+                        <button type="submit" class="btn-delete">Delete</button>
+                    </form>
+
+                    <!-- Rating and Review -->
+                    <p>Current Rating: <%= item.rating.toFixed(1) %>/5</p>
+                    <form action="/canteens/<%= canteen._id %>/foodItem/<%= item._id %>/rate" method="POST"
+                        style="display:inline;">
+                        <label for="rating">Rate:</label>
+                        <input type="number" name="rating" min="1" max="5" required>
+                        <button type="submit" class="btn">Submit Rating</button>
+                    </form>
+                </li>
+                <% }); %>
+        </ul>
+
+        <!-- Hotel Review Section -->
+        <h2>Reviews for <%= canteen.name %>
+        </h2>
+        <form action="/canteens/<%= canteen._id %>/review" method="POST">
+            <div class="form-group">
+                <textarea name="review" rows="3" placeholder="Write your review..." required></textarea>
+            </div>
+            <button type="submit" class="btn">Submit Review</button>
+        </form>
+
+        <ul class="reviews">
+            <% canteen.reviews.forEach(review=> { %>
+                <li>
+                    <%= review %>
+                </li>
+                <% }); %>
+        </ul>
+
+        <a href="/canteens" class="btn-back">Back to Canteens</a>
+    </div>
+</body>
+
+</html>
