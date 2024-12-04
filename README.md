@@ -40,5 +40,12 @@ and canteen staff. The system enables students to browse menus, while canteen st
 
 
 
+## Screenshots
+
+![Homepage](https://github.com/suhail19-oss/Canteen-Management-Project/blob/main/Frontend/images/WhatsApp%20Image%202024-12-05%20at%2001.34.37_8e656c9b.jpg?raw=true)
+![Login](https://github.com/suhail19-oss/Canteen-Management-Project/blob/main/Frontend/images/WhatsApp%20Image%202024-12-05%20at%2001.34.38_7c1ef900.jpg?raw=true)
+![Sign-Up](https://github.com/suhail19-oss/Canteen-Management-Project/blob/main/Frontend/images/WhatsApp%20Image%202024-12-05%20at%2001.34.38_6b1d1d65.jpg?raw=true)
+![Canteens](https://github.com/suhail19-oss/Canteen-Management-Project/blob/main/Frontend/images/WhatsApp%20Image%202024-12-05%20at%2001.34.39_94238d49.jpg?raw=true)
+
 
 
